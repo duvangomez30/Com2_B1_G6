@@ -50,18 +50,18 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    amp: '1'
+    amp: '0.1'
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
     noise_type: analog.GR_GAUSSIAN
     seed: '0'
-    type: complex
+    type: float
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [80, 152.0]
+    coordinate: [224, 168.0]
     rotation: 0
     state: enabled
 - name: analog_sig_source_x_0
@@ -71,7 +71,7 @@ blocks:
     alias: ''
     amp: '1'
     comment: ''
-    freq: '100000'
+    freq: '1000'
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
@@ -87,26 +87,24 @@ blocks:
     coordinate: [224, 296.0]
     rotation: 0
     state: enabled
-- name: blocks_vector_source_x_0
-  id: blocks_vector_source_x
+- name: blocks_add_xx_0
+  id: blocks_add_xx
   parameters:
     affinity: ''
     alias: ''
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    repeat: 'True'
-    tags: '[]'
+    num_inputs: '2'
     type: float
-    vector: (1, 2, -1)
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [272, 168.0]
+    coordinate: [464, 248.0]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: epy_block_0
   id: epy_block
   parameters:
@@ -133,7 +131,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [504, 240.0]
+    coordinate: [640, 80.0]
     rotation: 0
     state: enabled
 - name: epy_block_1
@@ -164,7 +162,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [712, 344.0]
+    coordinate: [696, 192.0]
     rotation: 0
     state: enabled
 - name: epy_block_2
@@ -202,7 +200,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 464.0]
+    coordinate: [680, 352.0]
     rotation: 0
     state: enabled
 - name: qtgui_number_sink_0
@@ -265,7 +263,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1024, 320.0]
+    coordinate: [1024, 312.0]
     rotation: 0
     state: enabled
 - name: qtgui_number_sink_1
@@ -328,7 +326,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1048, 552.0]
+    coordinate: [1016, 536.0]
     rotation: 0
     state: enabled
 - name: qtgui_number_sink_2
@@ -391,7 +389,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1032, 448.0]
+    coordinate: [1024, 424.0]
     rotation: 0
     state: enabled
 - name: qtgui_number_sink_3
@@ -517,7 +515,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 208.0]
+    coordinate: [1024, 200.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_0
@@ -808,18 +806,17 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 488.0]
+    coordinate: [408, 496.0]
     rotation: 0
-    state: disabled
+    state: enabled
 
 connections:
-- [analog_sig_source_x_0, '0', epy_block_0, '0']
-- [analog_sig_source_x_0, '0', epy_block_1, '0']
-- [analog_sig_source_x_0, '0', epy_block_2, '0']
-- [analog_sig_source_x_0, '0', qtgui_time_sink_x_1, '0']
-- [blocks_vector_source_x_0, '0', epy_block_0, '0']
-- [blocks_vector_source_x_0, '0', epy_block_1, '0']
-- [blocks_vector_source_x_0, '0', epy_block_2, '0']
+- [analog_noise_source_x_0, '0', blocks_add_xx_0, '0']
+- [analog_sig_source_x_0, '0', blocks_add_xx_0, '1']
+- [blocks_add_xx_0, '0', epy_block_0, '0']
+- [blocks_add_xx_0, '0', epy_block_1, '0']
+- [blocks_add_xx_0, '0', epy_block_2, '0']
+- [blocks_add_xx_0, '0', qtgui_time_sink_x_1, '0']
 - [epy_block_0, '0', qtgui_time_sink_x_0, '0']
 - [epy_block_1, '0', qtgui_time_sink_x_0_0, '0']
 - [epy_block_2, '0', qtgui_number_sink_4, '0']
