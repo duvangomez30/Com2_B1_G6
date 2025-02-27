@@ -1,10 +1,10 @@
 import numpy as np
 from gnuradio import gr
 class blk (gr. sync_block ):
-    def __init__ ( self ) :
+    def __init__ ( self ) : 
         gr. sync_block . __init__ (
         self ,
-        name ="Promedios_de_tiempos", 
+        name ="Promedios_de_tiempos ",
         in_sig =[ np. float32 ],
         out_sig =[ np. float32 ,np. float32 ,np. float32 ,np. float32 ,np. float32 ]
         )
@@ -14,9 +14,9 @@ class blk (gr. sync_block ):
         self . acum_anterior2 = 0
     def work (self , input_items , output_items ):
         x = input_items [0] 
-        y0 = output_items [0] 
-        y1 = output_items [1]  
-        y2 = output_items [2] 
+        y0 = output_items [0]
+        y1 = output_items [1] 
+        y2 = output_items [2]
         y3 = output_items [3] 
         y4 = output_items [4] 
         N = len (x)
@@ -29,6 +29,7 @@ class blk (gr. sync_block ):
         self . acum_anterior1 = acumulado [N -1]
         y1 [:] = acumulado1 / self . Ntotales
         y2 [:] = np. sqrt (y1)
+        # Calculo de la potencia promedio
         y3 [:] = np. multiply (y2 ,y2)
         x3 = np. multiply (x-y0 ,x-y0)
         acumulado2 = self . acum_anterior2 + np. cumsum (x3)

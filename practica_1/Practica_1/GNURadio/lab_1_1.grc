@@ -111,14 +111,14 @@ blocks:
     _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
       \ GRC will instantiate the first class it finds\nto get ports and parameters\
       \ of your block. The arguments to __init__  will\nbe the parameters. All of\
-      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      \ them are required to have default values!S\n\"\"\"\n\nimport numpy as np\n\
       from gnuradio import gr\n\n\nclass blk (gr. sync_block ):\n    def __init__\
       \ ( self,additionFlag = True) : \n        gr. sync_block . __init__ (\n    \
       \        self ,\n            name ='e_Acum', \n            in_sig =[ np. float32\
       \ ],\n            out_sig =[ np. float32 ]\n        )\n        self.additionFlag\
       \ = additionFlag\n    def work (self , input_items , output_items ):\n     \
       \   x = input_items [0] \n        y0 = output_items [0] \n        \n       \
-      \ y0 [:] = np. cumsum (x)\n        \n        return len (y0)\n"
+      \ y0[:] = npcmsum(x)\n            \n        \n        return len (y0)\n"
     additionFlag: '1'
     affinity: ''
     alias: ''
